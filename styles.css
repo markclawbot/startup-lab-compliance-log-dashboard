@@ -119,6 +119,23 @@ body {
     height: 20px;
 }
 
+.nav-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--primary-100);
+    color: var(--primary-900);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: auto;
+}
+
+.nav-item.active .nav-badge {
+    background: rgba(255,255,255,0.2);
+    color: var(--surface-white);
+}
+
 .main-content {
     margin-left: 240px;
     padding: 48px;

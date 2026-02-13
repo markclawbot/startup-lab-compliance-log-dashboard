@@ -30,10 +30,23 @@ function initComplianceChart() {
 }
 
 function loadChartJS() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
         script.onload = resolve;
+        script.onerror = () => {
+            // Fallback: show a static placeholder if Chart.js can't load
+            const canvas = document.getElementById('complianceChart');
+            if (canvas) {
+                const container = canvas.parentElement;
+                canvas.style.display = 'none';
+                const fallback = document.createElement('div');
+                fallback.style.cssText = 'display:flex;align-items:center;justify-content:center;height:200px;background:var(--bg-base);border-radius:10px;color:var(--neutral-500);font-size:14px;';
+                fallback.textContent = 'Compliance trend chart requires an internet connection to load.';
+                container.appendChild(fallback);
+            }
+            reject();
+        };
         document.head.appendChild(script);
     });
 }
@@ -281,17 +294,28 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Navigation Item Click Handlers (simulate routing)
+// Navigation Item Click Handlers
 function initNavigation() {
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
         item.addEventListener('click', function() {
-            // Don't change active state for prototype (dashboard is the only page)
-            // In a real app, this would navigate to different pages
-            const pageName = this.querySelector('span').textContent;
+            const section = this.dataset.section;
+            const comingSoon = this.dataset.comingSoon;
             
-            if (pageName !== 'Dashboard') {
-                showNotification(`Navigating to ${pageName}...`, 'info');
+            if (comingSoon) {
+                const pageName = this.querySelector('span').textContent;
+                showNotification(`${pageName} is coming soon!`, 'info');
+                return;
+            }
+            
+            if (section) {
+                const el = document.getElementById(section);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // Update active state
+                navItems.forEach(n => n.classList.remove('active'));
+                this.classList.add('active');
             }
         });
     });

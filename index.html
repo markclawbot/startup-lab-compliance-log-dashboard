@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinical Compliance Dashboard</title>
+    <title>ComplianceOS — Clinical Compliance Dashboard</title>
+    <meta name="description" content="Real-time compliance monitoring for medical equipment cleaning in healthcare facilities. Predictive alerts, audit-ready reports, and multi-location dashboards.">
+    <meta property="og:title" content="ComplianceOS — Automated Compliance for Healthcare">
+    <meta property="og:description" content="Stop dreading audits. ComplianceOS automates medical equipment compliance documentation with real-time monitoring and predictive alerts.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://markclawbot.github.io/startup-lab-compliance-log-dashboard/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='4' y='4' width='24' height='24' rx='4' fill='%230A5F5A'/><path d='M16 10V22M10 16H22' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,36 +26,38 @@
             </div>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item active">
+            <li class="nav-item active" data-section="section-dashboard">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M10 3L2 8V18H8V13H12V18H18V8L10 3Z"/>
                 </svg>
                 <span>Dashboard</span>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" data-section="section-equipment">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                     <rect x="3" y="5" width="14" height="10" rx="2"/>
                 </svg>
                 <span>Equipment</span>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" data-coming-soon="true">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M4 4H16V16H4V4ZM6 8H14V10H6V8Z"/>
                 </svg>
                 <span>Reports</span>
+                <span class="nav-badge">Soon</span>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" data-section="section-alerts">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M10 2L2 6V10C2 14.5 5.5 18.5 10 20C14.5 18.5 18 14.5 18 10V6L10 2Z"/>
                 </svg>
                 <span>Alerts</span>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" data-coming-soon="true">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                     <circle cx="10" cy="7" r="3"/>
                     <path d="M4 18V16C4 13.8 7.6 12 10 12C12.4 12 16 13.8 16 16V18"/>
                 </svg>
                 <span>Training</span>
+                <span class="nav-badge">Soon</span>
             </li>
         </ul>
     </nav>
@@ -72,7 +81,7 @@
         </header>
 
         <!-- Hero Compliance Metric -->
-        <section class="hero-metric">
+        <section class="hero-metric" id="section-dashboard">
             <div class="hero-card compliant">
                 <div class="hero-content">
                     <div class="hero-label">FACILITY COMPLIANCE STATUS</div>
@@ -119,7 +128,7 @@
                 </div>
 
                 <!-- Equipment Summary -->
-                <div class="card">
+                <div class="card" id="section-equipment">
                     <div class="card-header">
                         <h3>Equipment Status</h3>
                         <a href="#" class="card-link">View All →</a>
@@ -205,7 +214,7 @@
 
             <!-- Right Column: Predictive Alerts -->
             <div class="dashboard-right">
-                <div class="card alerts-card">
+                <div class="card alerts-card" id="section-alerts">
                     <div class="card-header">
                         <h3>Predictive Alerts</h3>
                         <span class="badge badge-amber">2 Active</span>
